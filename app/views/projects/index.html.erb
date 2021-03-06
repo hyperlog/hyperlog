@@ -10,3 +10,18 @@
     </div>
   </div>
 </div>
+<ul>
+  <% @projects.each do |project| %>
+    <li>
+      <%= link_to project_path(project) do %>
+        <div class="border">
+          <%= image_tag(project.image_url) %>
+          <h3><%= project.name %></h3>
+          <b><%= project.tagline %></b>
+          <p><%= truncate(project.description, length: 80, escape: true) %></p>
+          <p><%= link_to 'Edit', edit_project_path(project) %></p>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

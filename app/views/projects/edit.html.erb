@@ -1,0 +1,16 @@
+<%= form_with model: @project, url: update_project_path(@project), html: { method: :put } do |f| %>
+  <%= @project.name %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :tagline %>
+    <%= f.text_field :tagline %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit %>
+<% end %>
