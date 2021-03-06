@@ -32,4 +32,8 @@ Rails.application.routes.draw do
     get '/account', to: 'settings#account'
     get '/password', to: 'settings#password'
   end
+
+  scope '/projects' do
+    get '/', to: 'projects#index', as: 'projects_home'
+  end
 end
