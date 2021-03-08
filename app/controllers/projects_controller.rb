@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
 
   def index; end
 
+  def new; end
+
   def show
     @project = @projects.find(params[:id])
     render json: @project

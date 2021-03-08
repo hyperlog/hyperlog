@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   scope '/projects' do
     get '/', to: 'projects#index', as: 'projects_home'
+    get '/new', to: 'projects#new', as: 'project_new'
+    put '/new', to: 'projects#create', as: 'project_create'
     get '/:id', to: 'projects#show', as: 'project'
     put '/:id', to: 'projects#update', as: 'update_project'
     get '/:id/edit', to: 'projects#edit', as: 'edit_project'
