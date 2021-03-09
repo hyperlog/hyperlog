@@ -19,6 +19,21 @@ class ProjectsController < ApplicationController
     @project = @projects.find(params[:id])
   end
 
+  def create
+    create_params = project_params.merge(profile: current_user.profile)
+    @project = Project.create(create_params)
+    if @project.persisted?
+      redirect_to projects_home_path, notice: 'Project created successfully!'
+    elsif @project.errors.key?(:profile)
+      redirect_to project_new_path,
+                  alert: 'Something went wrong.' \
+                         ' Did you try to create more than 5 projects?'
+    else
+      redirect_to project_new_path,
+                  alert: @project.errors.full_messages.join(', ')
+    end
+  end
+
   def update
     @project = @projects.find(params[:id])
     if @project.update(project_params)
