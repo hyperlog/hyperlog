@@ -1,1 +1,10 @@
 <h1>Themes</h1>
+
+<div>
+  <h3>Select Theme</h3>
+  <%= form_with url: themes_path, method: :put, scope: :theme do |f| %>
+    <%= f.label :theme, 'Choose theme' %>
+    <%= f.select :theme, @valid_themes, selected: @current_theme %>
+    <%= f.submit 'Select' %>
+  <% end %>
+</div>

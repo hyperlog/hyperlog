@@ -1,4 +1,6 @@
 class Profile < ApplicationRecord
+  enum theme: { default: 0, leerob: 1 }, _suffix: true
+
   belongs_to :user
   has_one :github, dependent: :destroy
   has_many :projects, dependent: :destroy
@@ -42,5 +44,9 @@ class Profile < ApplicationRecord
       twitter: 'twitter.com/',
       github: 'github.com/'
     }
+  end
+
+  def self.valid_themes
+    themes.keys
   end
 end
